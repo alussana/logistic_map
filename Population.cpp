@@ -1,39 +1,36 @@
 #include <iostream>
 #include <algorithm>
 #include "Population.hpp"
+#include "float_ops.hpp"
 
 Population::Population(double r, double v, int n)
 {
   start_individuals = v;
   generations = n;
   growth_rate = r;
-  individuals = start_individuals;
-}
-
-double Population::next_generation()
-{
-  double new_individuals = growth_rate * individuals * (1 - individuals);
-  individuals = new_individuals;
-  return individuals;
 }
 
 std::vector<double> Population::run_simulation()
 {
-  std::vector<double> simulation(generations);
-  for (int i = 0; i < generations; i++)
+  std::vector<double> simulation(generations);  
+  simulation[0] = start_individuals;
+
+  for (int i = 1; i < generations; i++)
   {
-    simulation[i] = next_generation();
+    simulation[i] = growth_rate * simulation[i - 1] * (1 - simulation[i - 1]);
   }
+  
   return simulation;
 }
 
 std::vector<double> Population::find_limits(int p)
 {
-  if (p < 10 || generations / p < 1000)
+  if (p < 1000 || generations / p < 1000)
   {
     std::cout << "Error: Population equilibrium is evaluated on the last ";
     std::cout << p << " generations out of a total of " << generations;
-    std::cout << " generations.";
+    std::cout << " generations.\n";
+    std::cout << "Equilibrium cannot be assessed with reasonable precision.\n";
     exit(1);
   }
   else
@@ -43,14 +40,12 @@ std::vector<double> Population::find_limits(int p)
     sort(v.begin(), v.end());
 
     std::vector<double> limits;
-    double q = v[0];
     limits.push_back(v[0]);
     for (int i = 1; i < v.size(); i++)
     {
-      // TODO: write function to compare floats given some pecision epsilon
-      if (v[i] != q) {
+      bool ans = are_different(v[i], v[i - 1]);
+      if (ans) {
         limits.push_back(v[i]);
-        q = v[i];
       }
     }
     
@@ -67,11 +62,6 @@ double Population::get_growth_rate()
 double Population::get_start_individuals()
 {
   return start_individuals;
-}
-
-double Population::get_individuals()
-{
-  return individuals;
 }
 
 int Population::get_generations()

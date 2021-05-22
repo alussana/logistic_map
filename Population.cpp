@@ -21,7 +21,7 @@ std::vector<double> Population::run_simulation()
   return simulation;
 }
 
-std::vector<double> Population::find_limits(int p)
+std::vector<double> Population::find_steady_states(int p)
 {
   if (p < 1000 || generations / p < 1000)
   {

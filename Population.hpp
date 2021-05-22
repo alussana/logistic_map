@@ -11,6 +11,6 @@ class Population
 public:
   Population(double, double = 0.01, int = 10000000);
   ~Population();
-  std::vector<double> find_limits(int = 1000);
+  std::vector<double> find_steady_states(int = 1000);
 
 };

@@ -1,6 +1,6 @@
 #include <iostream>
-#include "BifurcationPlot.hpp"
-#include "Population.hpp"
+#include "bifurcationplot.hpp"
+#include "population.hpp"
 
 int main() {
   // /*

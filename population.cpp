@@ -1,6 +1,6 @@
 #include <iostream>
 #include <algorithm>
-#include "Population.hpp"
+#include "population.hpp"
 #include "float_ops.hpp"
 
 Population::Population(double r, double v, int n)

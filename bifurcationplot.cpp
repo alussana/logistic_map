@@ -1,5 +1,5 @@
-#include "BifurcationPlot.hpp"
-#include "Population.hpp"
+#include "bifurcationplot.hpp"
+#include "population.hpp"
 #include <fstream>
 #include <cmath>
 #include <string>

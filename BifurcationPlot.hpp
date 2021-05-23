@@ -9,9 +9,9 @@ class BifurcationPlot
   double start_individuals;
   int generations;
   std::vector<std::vector<double>> scan_r();
-  int scan_r(std::string);
   int find_steps();
 public:
+  int scan_r(std::string);
   BifurcationPlot(double = 0, double = 4, double = 0.05, double = 0.01, int = 10000000);
   ~BifurcationPlot();
 };

@@ -21,13 +21,13 @@ int BifurcationPlot::scan_r(std::string file_name)
   int steps = find_steps();
   for(int i = 0; i <= steps; i++)
   {
-    double r = min_growth_rate + (double)i / (double)steps;
+    double r = min_growth_rate + i * step;
     Population pop = Population(r, start_individuals, generations);
     std::vector<double> v = pop.find_steady_states();
     out_file << r;
-    for(i = 0; i < v.size(); i++)
+    for(int j = 0; j < v.size(); j++)
     {
-      out_file << "\t" << v[i];
+      out_file << "\t" << v[j];
     }
     out_file << "\n";
   }

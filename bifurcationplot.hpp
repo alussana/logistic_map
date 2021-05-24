@@ -12,6 +12,6 @@ class BifurcationPlot
   int find_steps();
 public:
   int scan_r(std::string);
-  BifurcationPlot(double = 0, double = 4, double = 0.05, double = 0.01, int = 10000000);
+  BifurcationPlot(double = 1, double = 4, double = 0.01, double = 0.01, int = 1000000);
   ~BifurcationPlot();
 };

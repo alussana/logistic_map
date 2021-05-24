@@ -23,7 +23,7 @@ std::vector<double> Population::run_simulation()
 
 std::vector<double> Population::find_steady_states(int p)
 {
-  if (p < 1000 || generations / p < 1000)
+  if (p < 100 || generations / p < 100)
   {
     std::cout << "Error: Population equilibrium is evaluated on the last ";
     std::cout << p << " generations out of a total of " << generations;
